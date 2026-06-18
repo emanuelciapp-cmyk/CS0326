@@ -1,0 +1,59 @@
+
+#include <stdio.h>
+
+
+float prodotto(float valori[], int n){
+    float prodotto = 0;
+    float sup = 0;
+    
+    for(int i = 0; i < n; i++){
+        if(i==0){
+            sup = valori[i];
+        }
+        else{
+            prodotto = valori[i]*sup;
+            sup = prodotto;
+        }
+    }
+
+    return prodotto;
+}
+
+float media(float valori[], int n){
+    float media = 0;
+    float somma = 0;
+    for(int i = 0; i < n; i++){
+        somma += valori[i];
+    }
+    media = somma/n;
+    return media;
+}
+
+int main(){
+    int n;
+
+    do{
+        printf("Quanti valori vuoi inserire? ");
+        scanf("%d", &n);
+        if(n<=1){
+            printf("Non è consentito il prodotto e la media di un solo valore, inserisca un numero maggiore di 1");
+        }
+    }while(n<1);
+
+    float valori[n];
+
+    printf("Perfetto grazie, ora andiamo con l'inserimento");
+    
+    for(int i = 0; i<n; i++){
+        printf("> ");
+        scanf("%f", &valori[i]);
+    }
+
+    float p = prodotto(valori, n);
+    printf("Il prodotto è %f", p);
+
+    float m = media(valori, n);
+    printf("La media è %f", m);
+
+    return 0;
+}
